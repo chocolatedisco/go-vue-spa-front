@@ -6,7 +6,9 @@
 </template>
 
 <script>
-	import Navbar from "@/components/navbar.vue";
+  import Navbar from "@/components/navbar.vue";
+  import firebase from '~/plugins/firebase'
+  
 	export default {
 		components: {
       Navbar,

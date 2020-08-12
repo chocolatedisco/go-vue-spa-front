@@ -1,8 +1,12 @@
 import firebase from '~/plugins/firebase'
 
-export default function({store, route, redirect}) {
-    let currentUser = firebase.auth().currentUser
-    if (!currentUser && route.fullPath !== '/login') {
-      return redirect('/login');
+export default function ({ route, store, redirect }) {
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+    store.dispatch("auth/gotUser", user)
+    } else {
+    if(route.fullPath !== '/login') redirect("/login")
     }
-  }
+})
+}
+
