@@ -14,7 +14,7 @@
 import firebase from '~/plugins/firebase'
 export default {
   name: 'Signup',
-  data () {
+  data: function() {
     return {
       email: '',
       password: ''
