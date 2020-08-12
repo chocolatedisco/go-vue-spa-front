@@ -1,5 +1,8 @@
 
 export default {
+  router: {
+    middleware: ['auth']
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -35,6 +38,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    // { src: '~/plugins/router.js' },
   ],
   /*
   ** Auto import components

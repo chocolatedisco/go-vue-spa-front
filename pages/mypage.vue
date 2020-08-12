@@ -1,6 +1,6 @@
 <template>
   <div class='hello'>
-    <h1>Hello {{ name }}!!</h1>
+    <!-- <h1>Hello {{ name }}!!</h1> -->
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <button @click="signOut">Sign out</button>
@@ -11,13 +11,13 @@
 
 <script>
 import axios from 'axios'
-import firebase from 'firebase'
+import firebase from '~/plugins/firebase'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      name: firebase.auth().currentUser.email
+    //   name: firebase.auth().currentUser.email
     }
   },
   methods: {
