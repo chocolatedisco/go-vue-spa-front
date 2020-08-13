@@ -54,9 +54,6 @@ export default {
    }
   },
   methods: {
-    ...mapActions([
-      'isAuthenticated'
-    ]),
     signOut: function () {
       firebase.auth().signOut().then(() => {
         localStorage.removeItem('jwt')
