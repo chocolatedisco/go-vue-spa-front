@@ -1,13 +1,31 @@
 <template>
-    <div class="signin">
-        <h2>Sign in</h2>
-        <input type="text" placeholder="email" v-model="email">
-        <input type="password" placeholder="Password" v-model="password">
-        <button @click="signIn">Signin</button>
-        <p>You don't have an account?
-            <router-link to="/signup">create account now!!</router-link>
-        </p>
-    </div>
+  <section class="sectoin">
+      <div class="container">
+        <br>
+          <div class="section-heading">
+            <h4 class="title is-2">Login</h4>
+          </div>
+        <br>
+      </div>
+      <div class="container">
+        <b-field label="Email">
+            <b-input placeholder="Email" type="email" v-model="email"></b-input>
+        </b-field>
+        <b-field label="Password">
+            <b-input type="password" v-model="password" password-reveal>
+            </b-input>
+        </b-field>
+          <!-- <input type="text" placeholder="email" v-model="email"> -->
+          <!-- <input type="password" placeholder="Password" v-model="password"> -->
+          <!-- <button @click="signIn">Signin</button> -->
+          <a class="button is-success" @click="signIn">
+            Sign In
+          </a>
+          <!-- <p>You don't have an account?
+              <router-link to="/signup">create account now!!</router-link>
+          </p> -->
+      </div>
+  </section>
 </template>
 
 <script>
