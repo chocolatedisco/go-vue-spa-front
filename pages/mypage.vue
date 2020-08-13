@@ -1,6 +1,7 @@
 <template>
   <div class='hello'>
     <!-- <h1>Hello {{ name }}!!</h1> -->
+    <p>{{ isAuthenticated }}</p>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <button @click="signOut">Sign out</button>
@@ -12,6 +13,8 @@
 <script>
 import axios from 'axios'
 import firebase from '~/plugins/firebase'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -20,7 +23,15 @@ export default {
     //   name: firebase.auth().currentUser.email
     }
   },
+  computed: {
+   isAuthenticated () {
+     return this.$store.getters['isAuthenticated']
+   }
+  },
   methods: {
+    ...mapActions([
+      'isAuthenticated'
+    ]),
     signOut: function () {
       firebase.auth().signOut().then(() => {
         localStorage.removeItem('jwt')

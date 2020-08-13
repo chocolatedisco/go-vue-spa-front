@@ -25,14 +25,44 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary" href="/signup">
-                        <strong>Sign up</strong>
+                    <a class="button is-danger" @click="signOut" v-if="isAuthenticated">
+                        Sign Out
                     </a>
-                    <a class="button is-light" href="/login">
-                        Log in
-                    </a>
+                    <div v-else>
+                        <a class="button is-light" href="/login">
+                            Log in
+                        </a>
+                        <a class="button is-primary" href="/signup">
+                            <strong>Sign up</strong>
+                        </a>
+                    </div>
                 </div>
             </b-navbar-item>
         </template>
     </b-navbar>
 </template>
+
+<script>
+import axios from 'axios'
+import firebase from '~/plugins/firebase'
+import { mapActions } from 'vuex'
+
+export default {
+  computed: {
+   isAuthenticated () {
+     return this.$store.getters['isAuthenticated']
+   }
+  },
+  methods: {
+    ...mapActions([
+      'isAuthenticated'
+    ]),
+    signOut: function () {
+      firebase.auth().signOut().then(() => {
+        localStorage.removeItem('jwt')
+        this.$router.push('/login')
+      })
+    }
+  }
+}
+</script>
