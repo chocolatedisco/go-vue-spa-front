@@ -46,11 +46,12 @@ export default {
     ]),
     signIn: function () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        localStorage.setItem('jwt', res.user.qa)
         let user = new Promise((resolve, reject) => {
           firebase.auth().onAuthStateChanged((user) => resolve(user))
         })
         this.setUser(user) // setUser is mapped action from vuex
+        // const token = await user.getIdToken(true);
+        // localStorage.setItem('jwt', token)
         this.$router.push('/mypage')
       }, err => {
         alert(err.message)
